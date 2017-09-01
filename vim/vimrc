@@ -1,0 +1,23 @@
+execute pathogen#infect()
+
+syn on
+set ai
+set ts=4
+set sw=4
+set expandtab
+set smartindent
+set hlsearch
+set mouse=a
+
+filetype indent on
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+let mapleader=","
+
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+augroup rainbow_lisp
+    autocmd!
+    autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END
