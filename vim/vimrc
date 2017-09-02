@@ -7,7 +7,6 @@ set sw=4
 set expandtab
 set smartindent
 set hlsearch
-set mouse=a
 
 filetype indent on
 
