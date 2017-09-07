@@ -7,6 +7,10 @@ set sw=4
 set expandtab
 set smartindent
 set hlsearch
+set autoread
+set ignorecase
+set smartcase
+set scrolloff=3
 
 filetype indent on
 
