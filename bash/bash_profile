@@ -28,3 +28,7 @@ export PS1
 
 alias ls='ls -GF'
 alias ll='ls -la'
+
+if [ -f $HOME/.bash_profile.local ]; then
+    . $HOME/.bash_profile.local
+fi
