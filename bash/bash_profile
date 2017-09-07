@@ -14,7 +14,7 @@ fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 
-if declare -F __git_ps1; then
+if declare -F __git_ps1 >/dev/null; then
     export PS1='\u@\h \w$(__git_ps1)\$ '
 else
     export PS1='\u@\h \w\$ '
