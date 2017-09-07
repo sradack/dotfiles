@@ -1,0 +1,22 @@
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin"
+
+export BREW_PREFIX=$(brew --prefix >/dev/null 2>/dev/null)
+
+# minimesos
+if [ -d $HOME/.minimesos ]; then
+    export PATH=$PATH:$HOME/.minimesos/bin
+fi
+
+# bash completion
+if [ -f $BREW_PREFIX/etc/bash_completion ]; then
+    . $BREW_PREFIX/etc/bash_completion
+fi
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+
+if declare -F __git_ps1; then
+    export PS1='\h:\w \u$(__git_ps1)\$ '
+else
+    export PS1='\h:\w \u\$ '
+fi
+
