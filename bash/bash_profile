@@ -14,9 +14,19 @@ fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 
-if declare -F __git_ps1 >/dev/null; then
-    export PS1='\u@\h \w$(__git_ps1)\$ '
-else
-    export PS1='\u@\h \w\$ '
-fi
+yellowgreen='\[\e[38;5;228m\]'
+pinkred='\[\e[38;5;197m\]'
+orangeish='\[\e[38;5;208m\]'
+tan='\[\e[38;5;136m\]'
+blueish='\[\e[38;5;110m\]'
+reset='\[\e[0m\]'
 
+PS1="${yellowgreen}\u${reset}@${pinkred}\h${reset} ${orangeish}\w${reset}${blueish}"
+if declare -F __git_ps1 >/dev/null; then
+    PS1+='$(__git_ps1)'
+fi
+PS1+="${reset}\$ "
+export PS1
+
+alias ls='ls -GF'
+alias ll='ls -la'
