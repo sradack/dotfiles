@@ -1,6 +1,6 @@
 export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin"
-
 export BREW_PREFIX=$(brew --prefix 2>/dev/null)
+export EDITOR=vim
 
 # minimesos
 if [ -d $HOME/.minimesos ]; then
