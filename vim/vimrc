@@ -12,6 +12,8 @@ set ignorecase
 set smartcase
 set scrolloff=3
 
+colorscheme industry
+
 filetype indent on
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
