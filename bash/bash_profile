@@ -26,8 +26,13 @@ fi
 PS1+="${reset}\$ "
 export PS1
 
-alias ls='ls -GF'
-alias ll='ls -la'
+if [ $(uname) = 'Darwin' ]; then
+    alias ls='ls -GF'
+    alias ll='ls -GFla'
+else
+    alias ls='ls --color -F'
+    alias ll='ls --color -la'
+fi
 
 if [ -f $HOME/.bash_profile.local ]; then
     . $HOME/.bash_profile.local
