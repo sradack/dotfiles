@@ -1,4 +1,4 @@
-export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$HOME/bin"
+export PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 export BREW_PREFIX=$(brew --prefix 2>/dev/null)
 export EDITOR=vim
 export HISTCONTROL=ignoredups
