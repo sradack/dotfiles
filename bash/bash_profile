@@ -35,7 +35,7 @@ else
     alias ll='ls --color -la'
 fi
 
-alias tmux='tmux -2'
+alias tmux='tmux -2 -u'
 
 if [ -f $HOME/.bash_profile.local ]; then
     . $HOME/.bash_profile.local
