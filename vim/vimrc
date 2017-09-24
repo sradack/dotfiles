@@ -23,6 +23,10 @@ let mapleader=","
 
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
+let g:paredit_matchlines = 400
+
+autocmd BufNewFile,BufRead *.edn set filetype=clojure
+
 augroup rainbow_lisp
     autocmd!
     autocmd FileType lisp,clojure,scheme RainbowParentheses
