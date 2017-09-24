@@ -15,6 +15,14 @@ set wildignore+=*/log/*,*/scheduler/*,*/target/*
 
 colorscheme industry
 
+" highlight trailing spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 filetype indent on
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
