@@ -31,7 +31,7 @@ let mapleader=","
 
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
-let g:paredit_matchlines = 400
+let g:paredit_matchlines = 100
 
 autocmd BufNewFile,BufRead *.edn set filetype=clojure
 
