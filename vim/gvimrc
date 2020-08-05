@@ -1,0 +1,12 @@
+set guifont=Consolas:h16
+
+colorscheme slate
+
+" remove toolbar
+set guioptions-=T
+
+" use a block cursor in insert mode
+" set guicursor+=i:block-Cursor
+
+" no cursor blink
+set guicursor+=a:blinkon0
