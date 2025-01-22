@@ -3,11 +3,6 @@ export BREW_PREFIX=$(brew --prefix 2>/dev/null)
 export EDITOR=vim
 export HISTCONTROL=ignoredups
 
-# minimesos
-if [ -d $HOME/.minimesos ]; then
-    export PATH=$PATH:$HOME/.minimesos/bin
-fi
-
 # bash completion
 if [ -f $BREW_PREFIX/etc/bash_completion ]; then
     . $BREW_PREFIX/etc/bash_completion
