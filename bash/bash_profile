@@ -1,36 +1,8 @@
 export PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
-export BREW_PREFIX=$(brew --prefix 2>/dev/null)
-export EDITOR=vim
-export HISTCONTROL=ignoredups
 
-# bash completion
-if [ -f $BREW_PREFIX/etc/bash_completion ]; then
-    . $BREW_PREFIX/etc/bash_completion
+if [ -f $HOME/.bashrc ]; then
+     source $HOME/.bashrc
 fi
-
-export GIT_PS1_SHOWDIRTYSTATE=1
-
-yellowgreen='\[\e[38;5;228m\]'
-orangeish='\[\e[38;5;208m\]'
-blueish='\[\e[38;5;110m\]'
-reset='\[\e[0m\]'
-
-PS1="${yellowgreen}\u${reset}@${yellowgreen}\h${reset} ${orangeish}\w${reset}${blueish}"
-if declare -F __git_ps1 >/dev/null; then
-    PS1+='$(__git_ps1)'
-fi
-PS1+="${reset}\$ "
-export PS1
-
-if [ $(uname) = 'Darwin' ]; then
-    alias ls='ls -GF'
-    alias ll='ls -GFla'
-else
-    alias ls='ls --color -F'
-    alias ll='ls --color -la'
-fi
-
-alias tmux='tmux -2 -u'
 
 if [ -f $HOME/.bash_profile.local ]; then
     . $HOME/.bash_profile.local
