@@ -85,3 +85,19 @@ if exists("+undofile")
   set undodir+=~/.vim/undo//
   set undofile
 endif
+
+" ctrlp setup
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+
+" fzf setup
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>l :Lines<CR>
+nnoremap <leader>c :Commands<CR>
+
+" open fzf with preview window by default (requires newer Vim or Neovim)
+let g:fzf_layout = { 'down': '~40%' }
+
+" ignore certain directories
+"#let g:fzf_files_options = '--exclude node_modules --exclude .git'
