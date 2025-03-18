@@ -101,3 +101,7 @@ let g:fzf_layout = { 'down': '~40%' }
 
 " ignore certain directories
 "#let g:fzf_files_options = '--exclude node_modules --exclude .git'
+
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
