@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 cd
 
 #bash
@@ -45,13 +47,14 @@ if [ ! -f ".vim/autoload/plug.vim" ]; then
     echo "vim-plug not found. Download now? (y/n)"
     read -r input
     if [[ "$input" =~ ^[Yy]$ ]]; then
-        curl -fLo ".vim/autoload/plug.vim" --create-dirs \
+        curl -fLo ".vim/autoload/plug.vim" \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-                    echo "✅ vim-plug installed. Open Vim and run :PlugInstall"
-                else
-                    echo "⚠️  vim-plug not installed. Plugin management will not work."
     fi
+fi
+
+if [ -f ".vim/autoload/plug.vim" ]; then
+    echo "✅ vim-plug (.vim/autoload/plug.vim) installed. Run :PlugInstall in vim."
 else
-    echo "✅ vim-plug already installed."
+    echo "⚠️  vim-plug not installed. Plugin management will not work."
 fi
 
