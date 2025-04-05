@@ -5,24 +5,53 @@ cd
 #bash
 if [ -f .bash_profile -a ! -L .bash_profile ]; then
 	mv -f  .bash_profile .bash_profile.bak
+    echo "⚠️  .bash_profile already exists. Backed up to .bash_profile.bak"
 fi
 ln -sf dotfiles/bash/bash_profile .bash_profile
+echo "✅ ~/.bash_profile 👉 ~/dotfiles/bash/bash_profile"
+
+if [ -f .bashrc -a ! -L .bashrc ]; then
+    mv -f  .bashrc .bashrc.bak
+    echo "⚠️  .bashrc already exists. Backed up to .bashrc.bak"
+fi
+ln -sf dotfiles/bash/bashrc .bashrc
+echo "✅ ~/.bashrc 👉 ~/dotfiles/bash/bashrc"
 
 #vim
 if [ -d .vim -a ! -L .vim ]; then
-	mv -f ~/.vim ~/.vim.bak
+	mv -f .vim .vim.bak
 fi
 if [ ! -L .vim ]; then
     ln -sf dotfiles/vim .vim
 fi
+echo "✅ ~/.vim 👉 ~/dotfiles/vim"
 
 if [ -f .vimrc -a ! -L .vimrc ]; then
 	mv -f .vimrc .vimrc.bak
+    echo "⚠️  .vimrc already exists. Backed up to .vimrc.bak"
 fi
 ln -sf dotfiles/vim/vimrc .vimrc
+echo "✅ ~/.vimrc 👉 ~/dotfiles/vim/vimrc"
 
 #git
 if [ -f .gitconfig -a ! -L .gitconfig ]; then
-	mv -f ~/.gitconfig ~/.gitconfig.bak
+	mv -f .gitconfig .gitconfig.bak
+    echo "⚠️  .gitconfig already exists. Backed up to .gitconfig.bak"
 fi
 ln -sf dotfiles/git/gitconfig .gitconfig
+echo "✅ ~/.gitconfig 👉 ~/dotfiles/git/gitconfig"
+
+if [ ! -f ".vim/autoload/plug.vim" ]; then
+    echo "vim-plug not found. Download now? (y/n)"
+    read -r input
+    if [[ "$input" =~ ^[Yy]$ ]]; then
+        curl -fLo ".vim/autoload/plug.vim" --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+                    echo "✅ vim-plug installed. Open Vim and run :PlugInstall"
+                else
+                    echo "⚠️  vim-plug not installed. Plugin management will not work."
+    fi
+else
+    echo "✅ vim-plug already installed."
+fi
+

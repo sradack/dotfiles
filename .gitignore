@@ -3,3 +3,5 @@ vim/backup
 vim/undo
 vim/viminfo
 vim/swap
+vim/plugged/
+vim/autoload/plug.vim
