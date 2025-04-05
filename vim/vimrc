@@ -1,10 +1,6 @@
 if filereadable(expand('~/.vim/autoload/plug.vim'))
     call plug#begin('~/.vim/plugged')
-
-    if $COPILOT !=# ''
-        Plug 'github/copilot.vim'
-    endif
-
+    Plug 'github/copilot.vim'
     Plug 'kien/ctrlp.vim'
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
@@ -12,7 +8,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
     Plug 'Vimjas/vim-python-pep8-indent'
-
     call plug#end()
 endif
 
