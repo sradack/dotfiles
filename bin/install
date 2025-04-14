@@ -28,13 +28,6 @@ if [ ! -L .vim ]; then
 fi
 echo "✅ ~/.vim 👉 ~/dotfiles/vim"
 
-if [ -f .vimrc -a ! -L .vimrc ]; then
-	mv -f .vimrc .vimrc.bak
-    echo "⚠️  .vimrc already exists. Backed up to .vimrc.bak"
-fi
-ln -sf dotfiles/vim/vimrc .vimrc
-echo "✅ ~/.vimrc 👉 ~/dotfiles/vim/vimrc"
-
 #git
 if [ -f .gitconfig -a ! -L .gitconfig ]; then
 	mv -f .gitconfig .gitconfig.bak
