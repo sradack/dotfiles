@@ -1,9 +1,9 @@
 export PATH="$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
-if [ -f $HOME/.bashrc ]; then
-     source $HOME/.bashrc
-fi
-
 if [ -f $HOME/.bash_profile.local ]; then
     . $HOME/.bash_profile.local
+fi
+
+if [ -f $HOME/.bashrc ]; then
+     source $HOME/.bashrc
 fi
