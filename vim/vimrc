@@ -1,13 +1,14 @@
 if filereadable(expand('~/.vim/autoload/plug.vim'))
     call plug#begin('~/.vim/plugged')
-    Plug 'github/copilot.vim'
     Plug 'kien/ctrlp.vim'
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-sleuth'
     Plug 'Vimjas/vim-python-pep8-indent'
+    Plug 'airblade/vim-gitgutter'
     call plug#end()
 endif
 
@@ -25,6 +26,11 @@ set scrolloff=3
 set wildignore+=*/log/*,*/scheduler/*,*/target/*
 set nofixendofline
 set nu
+set title " Update titles for tmux
+set history=1000
+set mouse=a
+
+let mapleader=","
 
 colorscheme industry
 
@@ -36,26 +42,12 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-filetype indent on
+" fix whitespace
+nnoremap <leader>w :%s/\s\+$//e<CR>
+xnoremap <leader>w :s/\s\+$//e<CR>
+
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-let mapleader=","
-
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-
-let g:paredit_matchlines = 200
-
-
-let g:clojure_fuzzy_indent = 1
-let g:clojure_fuzzy_indent_patterns = ['fnk$', 'try-let$']
-
-autocmd BufNewFile,BufRead *.edn set filetype=clojure
-
-augroup rainbow_lisp
-    autocmd!
-    autocmd FileType lisp,clojure,scheme RainbowParentheses
-augroup END
 
 " Save your backup files to a less annoying place than the current directory.
 " If you have .vim-backup in the current directory, it'll use that.
@@ -106,12 +98,29 @@ nnoremap <C-p> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>l :Lines<CR>
 nnoremap <leader>c :Commands<CR>
+nnoremap <leader>h :History<CR>
 
 " open fzf with preview window by default (requires newer Vim or Neovim)
 let g:fzf_layout = { 'down': '~40%' }
 
 " ignore certain directories
 "#let g:fzf_files_options = '--exclude node_modules --exclude .git'
+
+" faster cycling through quickfix list
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprev<CR>
+
+" vim-gitgutter
+set updatetime=500
+highlight SignColumn ctermbg=235
+highlight GitGutterAdd ctermfg=34 ctermbg=235
+highlight GitGutterChange ctermfg=220 ctermbg=235
+highlight GitGutterDelete ctermfg=196 ctermbg=235
+highlight GitGutterChangeDelete ctermfg=201 ctermbg=235
+
+nmap <leader>hs <Plug>(GitGutterStageHunk)
+nmap <leader>hu <Plug>(GitGutterUndoHunk)
+nmap <leader>hp <Plug>(GitGutterPreviewHunk)
 
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
