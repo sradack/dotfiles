@@ -41,7 +41,8 @@ dotfiles/
 ├── tmux/
 │   └── tmux.conf
 └── bin/
-    └── install
+    ├── install
+    └── uninstall
 ```
 
 ## Post-Installation
@@ -73,13 +74,20 @@ git pull
 
 ## Uninstallation
 
-To remove the dotfiles, delete the symlinks and restore your backup files:
+To remove the dotfiles and restore your backups, run the uninstall script:
 
 ```bash
-cd ~
-rm .bash_profile .bashrc .vim .gitconfig .tmux.conf
-# Restore backups if needed
-mv .bash_profile.bak .bash_profile  # if backup exists
-mv .bashrc.bak .bashrc              # if backup exists
-# ... etc
+cd ~/dotfiles
+./bin/uninstall
+```
+
+The uninstall script will:
+- Remove all dotfile symlinks from your home directory
+- Automatically restore any `.bak` backup files that were created during installation
+- Prompt for confirmation before making changes
+
+To completely remove the dotfiles directory after uninstalling:
+
+```bash
+rm -rf ~/dotfiles
 ```

@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd
+
+echo "This will remove dotfile symlinks and restore backups if they exist."
+echo "Continue? (y/n)"
+read -r input
+if [[ ! "$input" =~ ^[Yy]$ ]]; then
+    echo "Uninstall cancelled."
+    exit 0
+fi
+
+# bash_profile
+if [ -L .bash_profile ]; then
+    rm .bash_profile
+    echo "✅ Removed ~/.bash_profile symlink"
+    if [ -f .bash_profile.bak ]; then
+        mv .bash_profile.bak .bash_profile
+        echo "✅ Restored ~/.bash_profile from backup"
+    fi
+elif [ -f .bash_profile ]; then
+    echo "⚠️  ~/.bash_profile exists but is not a symlink. Skipping."
+fi
+
+# bashrc
+if [ -L .bashrc ]; then
+    rm .bashrc
+    echo "✅ Removed ~/.bashrc symlink"
+    if [ -f .bashrc.bak ]; then
+        mv .bashrc.bak .bashrc
+        echo "✅ Restored ~/.bashrc from backup"
+    fi
+elif [ -f .bashrc ]; then
+    echo "⚠️  ~/.bashrc exists but is not a symlink. Skipping."
+fi
+
+# vim
+if [ -L .vim ]; then
+    rm .vim
+    echo "✅ Removed ~/.vim symlink"
+    if [ -d .vim.bak ]; then
+        mv .vim.bak .vim
+        echo "✅ Restored ~/.vim from backup"
+    fi
+elif [ -d .vim ]; then
+    echo "⚠️  ~/.vim exists but is not a symlink. Skipping."
+fi
+
+# gitconfig
+if [ -L .gitconfig ]; then
+    rm .gitconfig
+    echo "✅ Removed ~/.gitconfig symlink"
+    if [ -f .gitconfig.bak ]; then
+        mv .gitconfig.bak .gitconfig
+        echo "✅ Restored ~/.gitconfig from backup"
+    fi
+elif [ -f .gitconfig ]; then
+    echo "⚠️  ~/.gitconfig exists but is not a symlink. Skipping."
+fi
+
+# tmux.conf
+if [ -L .tmux.conf ]; then
+    rm .tmux.conf
+    echo "✅ Removed ~/.tmux.conf symlink"
+    if [ -f .tmux.conf.bak ]; then
+        mv .tmux.conf.bak .tmux.conf
+        echo "✅ Restored ~/.tmux.conf from backup"
+    fi
+elif [ -f .tmux.conf ]; then
+    echo "⚠️  ~/.tmux.conf exists but is not a symlink. Skipping."
+fi
+
+echo ""
+echo "Uninstall complete! The ~/dotfiles directory has not been removed."
+echo "To remove it completely, run: rm -rf ~/dotfiles"
