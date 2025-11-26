@@ -36,6 +36,14 @@ fi
 ln -sf dotfiles/git/gitconfig .gitconfig
 echo "✅ ~/.gitconfig 👉 ~/dotfiles/git/gitconfig"
 
+#tmux
+if [ -f .tmux.conf -a ! -L .tmux.conf ]; then
+	mv -f .tmux.conf .tmux.conf.bak
+    echo "⚠️  .tmux.conf already exists. Backed up to .tmux.conf.bak"
+fi
+ln -sf dotfiles/tmux/tmux.conf .tmux.conf
+echo "✅ ~/.tmux.conf 👉 ~/dotfiles/tmux/tmux.conf"
+
 if [ ! -f ".vim/autoload/plug.vim" ]; then
     echo "vim-plug not found. Download now? (y/n)"
     read -r input
