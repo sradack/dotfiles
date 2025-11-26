@@ -1,8 +1,14 @@
 [alias]
-    lol = log --graph --decorate --oneline
+    lg = log --graph --decorate --oneline --pretty=format:'%C(auto)%h %d %s %C(green)@%al' --all
 
 [color]
     ui = auto
+
+[pull]
+    ff = only
+
+[push]
+    default = current
 
 [include]
     path = ~/.gitconfig.local
