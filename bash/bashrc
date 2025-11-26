@@ -1,6 +1,10 @@
 export BREW_PREFIX=$(brew --prefix 2>/dev/null)
 export EDITOR=vim
+export LESS="-R -M -Pw%f"
+export HISTSIZE=100000
+export HISTFILESIZE=100000
 export HISTCONTROL=ignoredups
+export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 
 # bash completion
 if [ -f $BREW_PREFIX/etc/bash_completion ]; then
@@ -20,6 +24,15 @@ if declare -F __git_ps1 >/dev/null; then
 fi
 PS1+="${reset}\$ "
 export PS1
+
+# titles for tmux/xterm
+case "$TERM" in
+    xterm*|rxvt*)
+        PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+        ;;
+    *)
+        ;;
+esac
 
 if [ $(uname) = 'Darwin' ]; then
     alias ls='ls -GF'
