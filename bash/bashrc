@@ -5,6 +5,7 @@ export HISTSIZE=100000
 export HISTFILESIZE=100000
 export HISTCONTROL=ignoredups
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
+export PATH="$PATH:$HOME/.local/bin"
 
 # bash completion
 if [ -f $BREW_PREFIX/etc/bash_completion ]; then
